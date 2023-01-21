@@ -1,6 +1,6 @@
 ﻿namespace ContactPro.Enums
 {
-    public class States
+    public enum States
     {
         AK,
         AL,
