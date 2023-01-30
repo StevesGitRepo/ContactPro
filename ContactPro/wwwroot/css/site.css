@@ -9,6 +9,8 @@
     --cf-light-color: #eeeeee;
     --cf-title-font: 'Fira Sans', sans-serif;
     --cf-body-font: 'Roboto', sans-serif;
+    --ss-connectBlue: #4BAEFA;
+    --ss-connectDark: #003A66;
 }
 
 html,
@@ -92,8 +94,12 @@ main {
     min-height: 100%;
 }
 
+.textDark {
+    color: var(--ss-connectDark);
+}
+
 .texthighlight {
-    color: var(--cf-primaryColor);
+    color: var(--ss-connectBlue);
 }
 
 .heroTitle {
@@ -101,6 +107,7 @@ main {
     text-transform: uppercase;
     font-family: var(--cf-title-font);
     font-weight: 600;
+    color: var(--ss-connectDark);
 }
 
 .subtitle {
