@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using ContactPro.Data;
 using ContactPro.Models;
 
@@ -20,6 +22,8 @@ namespace ContactPro.Controllers
         }
 
         // GET: Contacts
+        // Roles can be placed here as well
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Contacts.Include(c => c.AppUser);
@@ -27,6 +31,7 @@ namespace ContactPro.Controllers
         }
 
         // GET: Contacts/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Contacts == null)
@@ -46,6 +51,7 @@ namespace ContactPro.Controllers
         }
 
         // GET: Contacts/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "Id");
@@ -55,6 +61,7 @@ namespace ContactPro.Controllers
         // POST: Contacts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,AppUserId,FirstName,LastName,Birthdate,Address1,Address2,City,State,ZipCode,Email,PhoneNumber,Created,ImageData,ImageType")] Contact contact)
@@ -70,6 +77,7 @@ namespace ContactPro.Controllers
         }
 
         // GET: Contacts/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Contacts == null)
@@ -123,6 +131,7 @@ namespace ContactPro.Controllers
         }
 
         // GET: Contacts/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Contacts == null)
@@ -142,6 +151,7 @@ namespace ContactPro.Controllers
         }
 
         // POST: Contacts/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
