@@ -9,16 +9,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using ContactPro.Data;
 using ContactPro.Models;
+using ContactPro.Enums;
 
 namespace ContactPro.Controllers
 {
     public class ContactsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
-        public ContactsController(ApplicationDbContext context)
+        public ContactsController(ApplicationDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Contacts
@@ -55,6 +58,8 @@ namespace ContactPro.Controllers
         public IActionResult Create()
         {
             ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["StatesList"] = new SelectList(Enum.GetValues(typeof(States)).Cast<States>().ToList());
+           
             return View();
         }
 
@@ -64,10 +69,22 @@ namespace ContactPro.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AppUserId,FirstName,LastName,Birthdate,Address1,Address2,City,State,ZipCode,Email,PhoneNumber,Created,ImageData,ImageType")] Contact contact)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Birthdate,Address1,Address2,City,State,ZipCode,Email,PhoneNumber,ImageFile")] Contact contact)
         {
+            ModelState.Remove("AppUserId");
+
             if (ModelState.IsValid)
             {
+                contact.AppUserId = _userManager.GetUserId(User);
+                contact.Created = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
+
+
+                if (contact.Birthdate != null)
+                {
+                    contact.Birthdate = DateTime.SpecifyKind(contact.Birthdate.Value, DateTimeKind.Utc);
+
+                }
+
                 _context.Add(contact);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

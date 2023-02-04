@@ -13,8 +13,7 @@
                     <img class="square-img" src="~/img/DefaultContactImage.png">
                 </div>
                 <div>
-                    <label asp-for="ImageFile" class="control-label"></label>
-                    <input aasp-for="ImageFile" class="form-control" accept=".png,.jpg,.jpeg,.gif">
+                    <input asp-for="ImageFile" class="form-control mt-3" accept=".png,.jpg,.jpeg,.gif">
                     <span asp-validation-for="ImageFile" class="text-danger"></span>
                 </div>
             </div>
@@ -50,43 +49,33 @@
                         <input asp-for="Address2" class="form-control" />
                         <span asp-validation-for="Address2" class="text-danger"></span>
                     </div>
-                    <div class="col-12 col-6 mt-2">
+                    <div class="col-12 col-lg-6 mt-2">
                         <label asp-for="City" class="control-label"></label>
                         <input asp-for="City" class="form-control" />
                         <span asp-validation-for="City" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="col-12 col-lg-4 mt-2">
                         <label asp-for="State" class="control-label"></label>
-                        <select asp-for="State" class="form-control"></select>
+                        <select asp-for="State" class="form-control" asp-items="ViewBag.StatesList"></select>
                         <span asp-validation-for="State" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="col-12 col-lg-2 mt-2">
                         <label asp-for="ZipCode" class="control-label"></label>
                         <input asp-for="ZipCode" class="form-control" />
                         <span asp-validation-for="ZipCode" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Created" class="control-label"></label>
-                        <input asp-for="Created" class="form-control" />
-                        <span asp-validation-for="Created" class="text-danger"></span>
+                    <div class="col-12 col-lg-6 mt-3">
+                        <label asp-for="Categories" class="control-label"></label>
+                        <select name="CategoryList" class="form-control" asp-items="ViewBag.CategoryList" multiple>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="ImageData" class="control-label"></label>
-                        <input asp-for="ImageData" class="form-control" />
-                        <span asp-validation-for="ImageData" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ImageType" class="control-label"></label>
-                        <input asp-for="ImageType" class="form-control" />
-                        <span asp-validation-for="ImageType" class="text-danger"></span>
-                    </div>
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12 col-lg-6 mt-3">
                         <label asp-for="Birthdate" class="control-label"></label>
                         <input asp-for="Birthdate" class="form-control" />
                         <span asp-validation-for="Birthdate" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                    <div class="col-12 d-flex justify-content-end mt-2">
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill">Save</button>
                     </div>
                 </div>
             </div>
