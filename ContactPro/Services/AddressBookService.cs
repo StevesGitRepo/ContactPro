@@ -38,8 +38,8 @@ namespace ContactPro.Services
 
             try
             {
-                categories = await _context.Categories.Where(categories => categories.AppUserId == userId)
-                                                        .OrderBy(categories => categories.Name)
+                categories = await _context.Categories.Where(c => c.AppUserId == userId)
+                                                        .OrderBy(c => c.Name)
                                                         .ToListAsync();                     
             }
             catch
