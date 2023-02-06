@@ -11,6 +11,7 @@
     --cf-body-font: 'Roboto', sans-serif;
     --ss-connectBlue: #4BAEFA;
     --ss-connectDark: #003A66;
+    --ss-connectTextDarkBlue: #003a66;
 }
 
 html,
@@ -206,6 +207,9 @@ main {
     object-position: top;
 }
 
+.text-blue {
+    color: var(--ss-connectTextDarkBlue)
+}
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {

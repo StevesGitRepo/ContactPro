@@ -22,6 +22,8 @@ builder.Services.AddControllersWithViews();
 
 // Custom Services
 builder.Services.AddScoped<IImageService, ImageService>();
+builder.Services.AddScoped<IAddressBookService, IAddressBookService>();
+
 
 var app = builder.Build();
 
