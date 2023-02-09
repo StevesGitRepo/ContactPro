@@ -22,6 +22,7 @@ namespace ContactPro.Controllers
         private readonly IImageService _imageService;
         private readonly IAddressBookService _addressBookService;
 
+
         public ContactsController(ApplicationDbContext context, 
                                   UserManager<AppUser> userManager,
                                   IImageService imageService,
@@ -80,7 +81,7 @@ namespace ContactPro.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Birthdate,Address1,Address2,City,State,ZipCode,Email,PhoneNumber,ImageFile")] Contact contact)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Birthdate,Address1,Address2,City,State,ZipCode,Email,PhoneNumber,ImageFile")] Contact contact, List<int> CategoryList)
         {
             ModelState.Remove("AppUserId");
 
@@ -104,6 +105,13 @@ namespace ContactPro.Controllers
 
                 _context.Add(contact);
                 await _context.SaveChangesAsync();
+
+                //loop over all the selected categories
+                foreach (int categoryId in CategoryList)
+                {
+                    await _addressBookService.AddContactToCategoryAsync(categoryId, contact.Id);
+                }
+                //save each category selected to the contactCategories table.
                 return RedirectToAction(nameof(Index));
             }
 
