@@ -18,8 +18,13 @@ namespace ContactPro.Models
         [StringLength(50, ErrorMessage = "The (0) must be at least (2) and a max (1) characters long.", MinimumLength = 2)]
         public string? LastName { get; set; }
 
+        public virtual ICollection<Contact> Contacts { get; set; } = new HashSet<Contact>();
+
+        public virtual ICollection<Category> Categories { get; set; } = new HashSet<Category>();
+
         [NotMapped]
 
         public string? FullName { get { return $"{FirstName} {LastName}"; } }
+
     }
 }
