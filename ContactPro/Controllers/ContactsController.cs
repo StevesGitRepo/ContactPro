@@ -23,7 +23,7 @@ namespace ContactPro.Controllers
         private readonly IAddressBookService _addressBookService;
 
 
-        public ContactsController(ApplicationDbContext context, 
+        public ContactsController(ApplicationDbContext context,
                                   UserManager<AppUser> userManager,
                                   IImageService imageService,
                                   IAddressBookService addressBookService)
@@ -45,18 +45,18 @@ namespace ContactPro.Controllers
 
             //return the userID and its associated contacts and categories;
             AppUser appUser = _context.Users
-                                      .Include(c => c.Contacts) 
+                                      .Include(c => c.Contacts)
                                       .ThenInclude(c => c.Categories)
                                       .FirstOrDefault(u => u.Id == appUserId)!;
 
             var categories = appUser.Categories;
 
-            if (categoryId ==0)
+            if (categoryId == 0)
             {
-            contacts = appUser.Contacts.OrderBy(c => c.LastName)
-                                    .ThenBy(c => c.FirstName)
-                                    .ToList();
-            } 
+                contacts = appUser.Contacts.OrderBy(c => c.LastName)
+                                        .ThenBy(c => c.FirstName)
+                                        .ToList();
+            }
             else
             {
                 contacts = appUser.Categories.FirstOrDefault(c => c.Id == categoryId)
@@ -97,13 +97,13 @@ namespace ContactPro.Controllers
             string appUserId = _userManager.GetUserId(User);
             var contacts = new List<Contact>();
 
-            AppUser appUser = _context.Users    
+            AppUser appUser = _context.Users
                                         .Include(c => c.Contacts)
                                         .ThenInclude(c => c.Categories)
                                         .FirstOrDefault(u => u.Id == appUserId);
             if (string.IsNullOrEmpty(searchString))
             {
-                contacts = appUser.Contacts         
+                contacts = appUser.Contacts
                                     .OrderBy(c => c.LastName)
                                     .ThenBy(c => c.FirstName)
                                     .ToList();
@@ -121,9 +121,15 @@ namespace ContactPro.Controllers
             return View(nameof(Index), contacts);
         }
 
+        [Authorize]
+        public IActionResult EmailContact(int contactId)
+        {
+            return View();
+        }
+
         // GET: Contacts/Create
         [Authorize]
-        
+
         public async Task<IActionResult> Create()
         {
             string appUserId = _userManager.GetUserId(User);
@@ -143,6 +149,7 @@ namespace ContactPro.Controllers
         {
             ModelState.Remove("AppUserId");
 
+            DateTime dateTime = DateTime.Now.ToUniversalTime();
             if (ModelState.IsValid)
             {
                 contact.AppUserId = _userManager.GetUserId(User);
@@ -185,12 +192,19 @@ namespace ContactPro.Controllers
                 return NotFound();
             }
 
-            var contact = await _context.Contacts.FindAsync(id);
+            string appUserId = _userManager.GetUserId(User);
+
+            //var contact = await _context.Contacts.FindAsync(id);
+            var contact = await _context.Contacts.Where(c => c.Id == id && c.AppUserId == appUserId)
+                                .FirstOrDefaultAsync();
             if (contact == null)
             {
                 return NotFound();
             }
-            ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "Id", contact.AppUserId);
+
+            ViewData["StatesList"] = new SelectList(Enum.GetValues(typeof(States)).Cast<States>().ToList());
+            ViewData["CategoryList"] = new MultiSelectList(await _addressBookService.GetUserCategoriesAsync(appUserId), "Id", "Name", await _addressBookService.GetContactCategoryIdsAsync(contact.Id));
+
             return View(contact);
         }
 
@@ -199,7 +213,7 @@ namespace ContactPro.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AppUserId,FirstName,LastName,Birthdate,Address1,Address2,City,State,ZipCode,Email,PhoneNumber,Created,ImageData,ImageType")] Contact contact)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AppUserId,FirstName,LastName,Birthdate,Address1,Address2,City,State,ZipCode,Email,PhoneNumber,Created,ImageData,ImageFile,ImageType")] Contact contact, List<int> CategoryList)
         {
             if (id != contact.Id)
             {
@@ -210,8 +224,38 @@ namespace ContactPro.Controllers
             {
                 try
                 {
+                    contact.Created = DateTime.SpecifyKind(contact.Created, DateTimeKind.Utc);
+
+                    if (contact.Birthdate != null)
+                    {
+                        contact.Birthdate = DateTime.SpecifyKind(contact.Birthdate.Value, DateTimeKind.Utc);
+                    }
+
+                    if (contact.ImageFile != null)
+                    {
+                        contact.ImageData = await _imageService.ConvertFileToByteArrayAsync(contact.ImageFile);
+                        contact.ImageType = contact.ImageFile.ContentType;
+                    }
+
                     _context.Update(contact);
                     await _context.SaveChangesAsync();
+
+                    //save the categories
+                    //remove the current categories
+                    List<Category> oldCategories = (await _addressBookService.GetContactCategoriesAsync(contact.Id)).ToList();
+                    foreach (var category in oldCategories)
+                    {
+                        await _addressBookService.RemoveContactFromCategoryAsync(category.Id, contact.Id);
+                    }
+
+
+
+                    //add the selected categories
+                    foreach (int categoryid in CategoryList)
+                    {
+                        await _addressBookService.AddContactToCategoryAsync(categoryid, contact.Id);
+                    }
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -265,14 +309,14 @@ namespace ContactPro.Controllers
             {
                 _context.Contacts.Remove(contact);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ContactExists(int id)
         {
-          return _context.Contacts.Any(e => e.Id == id);
+            return _context.Contacts.Any(e => e.Id == id);
         }
     }
 }
