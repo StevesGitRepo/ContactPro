@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Authorization;
 using ContactPro.Data;
 using ContactPro.Models;
@@ -22,24 +23,27 @@ namespace ContactPro.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IImageService _imageService;
         private readonly IAddressBookService _addressBookService;
+        private readonly IEmailSender _emailService;
 
 
         public ContactsController(ApplicationDbContext context,
                                   UserManager<AppUser> userManager,
                                   IImageService imageService,
-                                  IAddressBookService addressBookService)
+                                  IAddressBookService addressBookService,
+                                  IEmailSender emailService)
         {
             _context = context;
             _userManager = userManager;
             _imageService = imageService;
             _addressBookService = addressBookService;
+            _emailService = emailService;
         }
 
         // GET: Contacts
-        // Roles can be placed here as well
         [Authorize]
-        public IActionResult Index(int categoryId)
+        public IActionResult Index(int categoryId, string swalMessage = null)
         {
+            ViewData["SwalMessage"] = swalMessage;
 
             var contacts = new List<Contact>();
             string appUserId = _userManager.GetUserId(User);
@@ -72,6 +76,55 @@ namespace ContactPro.Controllers
             return View(contacts);
         }
 
+        [Authorize]
+        public async Task<IActionResult> EmailContact(int id)
+        {
+            string appUserId = _userManager.GetUserId(User);
+            Contact contact = await _context.Contacts.Where(c => c.Id == id && c.AppUserId == appUserId)
+                                                     .FirstOrDefaultAsync();
+
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            EmailData emailData = new EmailData()
+            {
+                EmailAddress = contact.Email,
+                FirstName = contact.FirstName,
+                LastName = contact.LastName
+            };
+
+            EmailContactViewModel model = new EmailContactViewModel()
+            {
+                Contact = contact,
+                EmailData = emailData
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> EmailContact(EmailContactViewModel ecvm)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _emailService.SendEmailAsync(ecvm.EmailData.EmailAddress, ecvm.EmailData.Subject, ecvm.EmailData.Body);
+                    return RedirectToAction("Index", "Contacts", new { swalMessage = "Success: Email Sent!"});
+                }
+                catch
+                {
+                    return RedirectToAction("Index", "Contacts", new { swalMessage = "Error: Email Send Failed!" });
+
+                    throw;
+                }
+            }
+            return View(ecvm);
+        }
+       
         // GET: Contacts/Details/5
         [Authorize]
         public async Task<IActionResult> Details(int? id)
@@ -92,68 +145,9 @@ namespace ContactPro.Controllers
             return View(contact);
         }
 
-        [Authorize]
-        public IActionResult SearchContacts(string searchString)
-        {
-            string appUserId = _userManager.GetUserId(User);
-            var contacts = new List<Contact>();
 
-            AppUser appUser = _context.Users
-                                        .Include(c => c.Contacts)
-                                        .ThenInclude(c => c.Categories)
-                                        .FirstOrDefault(u => u.Id == appUserId);
-            if (string.IsNullOrEmpty(searchString))
-            {
-                contacts = appUser.Contacts
-                                    .OrderBy(c => c.LastName)
-                                    .ThenBy(c => c.FirstName)
-                                    .ToList();
-            }
-            else
-            {
-                contacts = appUser.Contacts.Where(c => c.FullName!.ToLower().Contains(searchString.ToLower()))
-                                    .OrderBy(c => c.LastName)
-                                    .ThenBy(c => c.FirstName)
-                                    .ToList();
-            }
-
-            ViewData["CategoryId"] = new SelectList(appUser.Categories, "Id", "Name", 0);
-
-            return View(nameof(Index), contacts);
-        }
-
-        [Authorize]
-        public async Task<IActionResult> EmailContact(int id)
-        {
-            string appUserId = _userManager.GetUserId(User);
-            Contact contact = await _context.Contacts.Where(c => c.Id == id && c.AppUserId == appUserId)
-                                                     .FirstOrDefaultAsync();
-
-            if( contact == null)
-            {
-                return NotFound();
-            }
-
-            EmailData emailData = new EmailData()
-            {
-                EmailAddress = contact.Email,
-                FirstName = contact.FirstName,
-                LastName = contact.LastName
-            };
-
-            EmailContactViewModel model = new EmailContactViewModel()
-            {
-                Contact = contact,
-                EmailData = emailData
-            };
-                                                            
-            return View(model);
-        }
-      
-        
         // GET: Contacts/Create
         [Authorize]
-
         public async Task<IActionResult> Create()
         {
             string appUserId = _userManager.GetUserId(User);
@@ -205,6 +199,36 @@ namespace ContactPro.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize]
+        public IActionResult SearchContacts(string searchString)
+        {
+            string appUserId = _userManager.GetUserId(User);
+            var contacts = new List<Contact>();
+
+            AppUser appUser = _context.Users
+                                        .Include(c => c.Contacts)
+                                        .ThenInclude(c => c.Categories)
+                                        .FirstOrDefault(u => u.Id == appUserId);
+            if (string.IsNullOrEmpty(searchString))
+            {
+                contacts = appUser.Contacts
+                                    .OrderBy(c => c.LastName)
+                                    .ThenBy(c => c.FirstName)
+                                    .ToList();
+            }
+            else
+            {
+                contacts = appUser.Contacts.Where(c => c.FullName!.ToLower().Contains(searchString.ToLower()))
+                                    .OrderBy(c => c.LastName)
+                                    .ThenBy(c => c.FirstName)
+                                    .ToList();
+            }
+
+            ViewData["CategoryId"] = new SelectList(appUser.Categories, "Id", "Name", 0);
+
+            return View(nameof(Index), contacts);
         }
 
         // GET: Contacts/Edit/5

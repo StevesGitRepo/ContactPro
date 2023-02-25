@@ -4,6 +4,7 @@ namespace ContactPro.Models
 {
     public class EmailData
     {
+
         [Required]
         public string EmailAddress { get; set; } = "";
 
