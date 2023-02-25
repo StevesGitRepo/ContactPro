@@ -4,13 +4,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ContactPro.Services;
 using ContactPro.Services.Interfaces;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-var connectionString = builder.Configuration.GetSection("pgSettings")["pgConnection"]; 
+var connectionString = builder.Configuration.GetSection("pgSettings")["pgConnection"];
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
@@ -23,7 +24,9 @@ builder.Services.AddControllersWithViews();
 // Custom Services
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IAddressBookService, AddressBookService>();
+builder.Services.AddScoped<IEmailSender, EmailService>();
 
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
 var app = builder.Build();
 
