@@ -31,7 +31,7 @@ body {
 }
 
 /*--Button Overrides --*/
-/*-- Button styles override the standard Bootstrap Styles --*/
+/*-- Button styles override the original Bootstrap Styles --*/
 .btn-outline-primary {
     color: var(--cf-dark-color);
     border-color: var(--cf-primaryColor) !important;
