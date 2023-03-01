@@ -107,6 +107,10 @@ main {
     min-height: 100%;
 }
 
+hr {
+    color: var(--ss-connectTextDarkBlue);
+}
+
 .textDark {
     color: var(--ss-connectDark);
 }
@@ -220,7 +224,7 @@ main {
 }
 
 .text-blue {
-    color: var(--ss-connectTextDarkBlue)
+    color: var(--ss-connectTextDarkBlue);
 }
 
 /* X-Large devices (large desktops, 1200px and up) */

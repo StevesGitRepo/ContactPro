@@ -5,19 +5,20 @@
 
 <div class="row align-items-center h-100">
     <div class="col-12 col-md-6 col-lg-5 order-last order-md-first">
-        <div class="ms-5">
-            <h1 class="heroTitle mt-2 me-2 me-lg-0">
+        <div class="ms-4 ms-lg-5">
+            <h1 class="heroTitle mt-2 me-2 me-lg-0 hidden-on-mobile">
                 Connect like a <span class="texthighlight">Pro</span>!</h1>
-            <div class="subtitle me-2">
-                A robust address book that connects with the most important people in your life. Experience
-                the power of Connect Pro try it today!<br /><br /><strong>Built with pride using cutting edge tech:</strong>
+            <div class="subtitle me-4 mt-5 mt-lg-0">
+                <hr class="text-blue hidden-on-desktop"/>
+                Organize your contacts and stay connected. Experience
+                the power of ConnectPro, try it today!<br /><br /><strong>Built with pride using cutting edge tech:</strong>
+            </div>
                 <br /><i class="devicon-dot-net-plain-wordmark colored icon"></i>
                 <i class="devicon-csharp-plain-wordmark colored icon"></i>
                 <i class="devicon-postgresql-plain-wordmark colored icon"></i>
                 <i class="devicon-bootstrap-plain-wordmark colored icon"></i>
                 <i class="devicon-heroku-plain-wordmark colored icon"></i>
-            </div>
-            <div class="text-start">
+            <div class="text-start mt-2">
                 <a class="btn btn-lg btn-primary rounded-pill w-30 mt-4" asp-area="" asp-controller="Contacts" asp-action="Index">GET STARTED </a>
             </div>
         </div>
@@ -26,7 +27,9 @@
         <img src="~/img/ConnectPro3Cropped.png" class="img-fluid" />
     </div>
     <div class="col-9 col-md-6 col-lg-6 text-center ms-5 hidden-on-desktop">
-        <img src="~/img/ConnectProSquareRecropped" class="img-fluid" />
+        <a asp-area="" asp-controller="Contacts" asp-action="Index">
+        <img src="~/img/ConnectProRecropped.png" class="img-fluid" />
+        </a>
     </div>
     <div class="col-3"></div>
 </div>
