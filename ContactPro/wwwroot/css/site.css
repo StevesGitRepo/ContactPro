@@ -107,8 +107,8 @@ main {
     min-height: 100%;
 }
 
-hr {
-    color: var(--ss-connectTextDarkBlue);
+.hr-blue {
+    background-color: var(--ss-connectTextDarkBlue);
 }
 
 .textDark {
