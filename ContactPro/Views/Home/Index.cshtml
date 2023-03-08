@@ -5,28 +5,31 @@
 
 <div class="row align-items-center h-100">
     <div class="col-12 col-md-6 col-lg-5 order-last order-md-first">
-        <div class="ms-5">
-            <h1 class="heroTitle mt-2 me-2 me-lg-0">
-                Connect like a <span class="texthighlight">Pro</span>!</h1>
-            <div class="subtitle me-2">
-                A robust address book that connects with the most important people in your life. Experience
-                the power of Connect Pro, try it today!<br /><br /><strong>Built with pride using cutting edge tech:</strong>
-                <br /><i class="devicon-dot-net-plain-wordmark colored icon"></i>
-                <i class="devicon-csharp-plain-wordmark colored icon"></i>
-                <i class="devicon-postgresql-plain-wordmark colored icon"></i>
-                <i class="devicon-bootstrap-plain-wordmark colored icon"></i>
-                <i class="devicon-heroku-plain-wordmark colored icon"></i>
+        <div class="ms-4 ms-lg-5">
+            <h1 class="heroTitle mt-4 me-5 me-lg-0 mb-2 me-lg-0">
+                Connect like a <span class="texthighlight">Pro</span>!
+            </h1>
+            <div class="subtitle me-4 mt-lg-0">
+                <hr class="hr-blue hidden-on-desktop" />
+                Organize your contacts and stay connected. Experience
+                the power of ConnectPro, try it today!<br /><br /><strong>Built with pride using<span class="hidden-on-mobile"> cutting edge tech</span>:</strong>
             </div>
-            <div class="text-start">
-                <a class="btn btn-lg btn-primary rounded-pill w-30 mt-4" asp-area="" asp-controller="Contacts" asp-action="Index">GET STARTED </a>
+            <br />
+            <i class="devicon-dot-net-plain-wordmark colored icon"></i>
+            <i class="devicon-csharp-plain-wordmark colored icon"></i>
+            <i class="devicon-postgresql-plain-wordmark colored icon"></i>
+            <i class="devicon-bootstrap-plain-wordmark colored icon"></i>
+            <i class="devicon-heroku-plain-wordmark colored icon"></i>
+            <div class="text-start mt-2">
+                <a class="btn btn-lg btn-primary rounded-pill w-30 mt-4" asp-area="" asp-controller="Contacts" asp-action="Index">GET STARTED! </a>
             </div>
         </div>
     </div>
-    <div class="col-9 col-md-6 col-lg-6 text-center ms-5 hidden-on-mobile">
-        <img src="~/img/ConnectPro3Cropped.png" class="img-fluid" />
+    <div class="col-12 col-md-6 col-lg-6 text-center ms-0 ms-lg-5">
+        <img src="~/img/ConnectPro3Cropped.png" class="img-fluid" width="700" />
     </div>
-    <div class="col-9 col-md-6 col-lg-6 text-center ms-5 hidden-on-desktop">
-        <img src="~/img/ConnectProSquareCropped.png" class="img-fluid" />
-    </div>
-    <div class="col-3"></div>
+    @* <div class="col-12 col-md-6 col-lg-6 text-center ms-0 ms-lg-5">
+    <img src="~/img/ConnectPro3Cropped.png" class="img-fluid" />
+    </div>*@
+    <div class="col-lg-3"></div>
 </div>
