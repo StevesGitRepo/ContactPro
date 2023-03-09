@@ -71,7 +71,7 @@ namespace ContactPro.Controllers
                 EmailData = emailData
             };
 
-            return View();
+            return View(model);
         }
 
         [Authorize]
