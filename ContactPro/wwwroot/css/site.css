@@ -46,13 +46,13 @@ body {
 
 .btn-primary {
     color: white !important;
-    background-color: var(--cf-primaryColor) !important;
+    background-color: var(--ss-connectTextDarkBlue) !important;
     border-color: var(--cf-secondary-color);
 }
 
     .btn-primary:hover {
         filter: brightness(1.2) !important;
-        border-color: var(--cf-primaryColorDark);
+        border-color: var(--ss-connectTextDarkBlue);
     }
 
     .btn-primary:active,
@@ -127,9 +127,6 @@ main {
     color: var(--ss-connectDark);
 }
 
-.subtitle {
-    font-size: 1.5rem;
-}
 
 .pageHeader {
     background-color: var(--cf-secondaryColor);
@@ -223,6 +220,9 @@ main {
     object-position: top;
 }
 
+.subtitle {
+    font-size: 1.5rem;
+}
 .text-blue {
     color: var(--ss-connectTextDarkBlue);
 }
