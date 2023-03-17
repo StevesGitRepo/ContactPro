@@ -9,7 +9,7 @@
     --cf-light-color: #eeeeee;
     --cf-title-font: 'Fira Sans', sans-serif;
     --cf-body-font: 'Roboto', sans-serif;
-    --ss-connectBlue: #4BAEFA;
+    --ss-connectBlue: #35A2F6;
     --ss-connectDark: #003A66;
     --ss-connectTextDarkBlue: #003a66;
 }
@@ -225,6 +225,10 @@ main {
 }
 .text-blue {
     color: var(--ss-connectTextDarkBlue);
+}
+
+.text-light-blue {
+    color: var(--ss-connectBlue);
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
