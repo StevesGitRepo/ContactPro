@@ -227,10 +227,6 @@ main {
     color: var(--ss-connectTextDarkBlue);
 }
 
-.h1 {
-    font-size: 3rem;
-}
-
 .text-light-blue {
     color: var(--ss-connectBlue);
 }

@@ -3,18 +3,18 @@
 
 @{
     ViewData["Title"] = "User Log in";
-    ViewData["Demo"] = "Try the demo!";
+    ViewData["Demo"] = "Try the free demo!";
     ViewData["Password"] = "ConnectPr0!";
     ViewData["EmailLogin"] = "connectprodemo@gmail.com";
 }
 
 <div class="row d-flex justify-content-center mx-2">
     <div class="col-md-4 card rounded-1 ms-3 me-3">
-        <div class="h1 text-blue text-center mt-4 pt-1">
+        <h1 class="text-blue text-center mt-4 pt-1">
             <strong>
                 @ViewData["Demo"]
             </strong>
-        </div>
+        </h1>
 
         <form id="account" method="post">
             @*<h2>Use a local account to log in.</h2>*@
@@ -47,16 +47,16 @@
                     @ViewData["Password"]
                 </strong>
             </p>
-            <h5 class="text-light-blue pb-2">Create new contacts and groups</h5>
+            <h5 class="text-light-blue pb-2">Copy & paste the password above</h5>
         </div>
     </div>
     <div class="col-md-2 h-100 d-flex flex-column justify-content-between ms-3 ms-lg-0"><img src="~/img/ConnectProBlank.png" /></div>
     <div class="col-md-4 card">
-        <div class="h1 text-blue text-center mt-4 pt-1">
+        <h1 class="text-blue text-center mt-4 pt-1">
             <strong>
                 @ViewData["Title"]
             </strong>
-        </div>
+        </h1>
         <section>
             <form id="account" method="post">
                 @*<h2>Use a local account to log in.</h2>*@
