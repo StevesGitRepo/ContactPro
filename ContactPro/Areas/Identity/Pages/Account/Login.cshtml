@@ -9,7 +9,7 @@
 }
 
 <div class="row d-flex justify-content-center mx-2">
-    <div class="col-md-4 card rounded-1 ms-3 me-3">
+    <div class="col-md-4 card shadow rounded-1 ms-3 me-3">
         <h1 class="text-blue text-center mt-4 pt-1">
             <strong>
                 @ViewData["Demo"]
@@ -26,7 +26,7 @@
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-floating mt-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="" aria-required="true" value="ConnectPro!" />
+                <input asp-for="Input.Password" class="form-control" autocomplete="" aria-required="true" value="" />
                 <label asp-for="Input.Password" class="form-label"></label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
@@ -50,8 +50,8 @@
             <h5 class="text-light-blue pb-2">Copy & paste the password above</h5>
         </div>
     </div>
-    <div class="col-md-2 h-100 d-flex flex-column justify-content-between ms-3 ms-lg-0"><img src="~/img/ConnectProBlank.png" /></div>
-    <div class="col-md-4 card">
+    <div class="col-md-2 h-100 d-flex flex-column justify-content-between mt-4 mt-lg-2 mb-2 ms-3 ms-lg-0"><img src="~/img/ConnectProLogInCropped.png" /></div>
+    <div class="col-md-4 card shadow">
         <h1 class="text-blue text-center mt-4 pt-1">
             <strong>
                 @ViewData["Title"]
