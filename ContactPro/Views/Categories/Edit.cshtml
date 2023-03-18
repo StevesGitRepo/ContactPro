@@ -29,12 +29,12 @@
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <textarea asp-for="Name" id="Category Details" class="form-control" rows="3"/>
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group text-end mt-2">
-                <input type="submit" value="Save" class="btn btn-outline-primary rounded-pill btnlinks" />
+                @*<span asp-validation-for="Name" class="text-danger"></span>*@
             </div>
         </form>
+            <div class="form-group text-end mt-2">
+                <input type="submit" value="Save" class="btn btnprimary rounded-pill btnlinks" />
+            </div>
     </div>
 </div>
 
