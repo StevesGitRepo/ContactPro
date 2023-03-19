@@ -9,6 +9,7 @@
     --cf-light-color: #eeeeee;
     --cf-title-font: 'Fira Sans', sans-serif;
     --cf-body-font: 'Roboto', sans-serif;
+    --ss-connectLightBlue: #BBD9F1;
     --ss-connectBlue: #35A2F6;
     --ss-connectDark: #003A66;
     --ss-connectTextDarkBlue: #003a66;
@@ -33,15 +34,16 @@ body {
 /*--Button Overrides --*/
 /*-- Button styles override the original Bootstrap Styles --*/
 .btn-outline-primary {
-    color: var(--cf-dark-color);
-    border-color: var(--cf-primaryColor) !important;
+    color: var(--ss-connectTextDarkBlue);
+    border-color: var(--ss-connectTextDarkBlue) !important;
+    background-color: var(--ss-connectLightBlue);
 }
 
     .btn-outline-primary:hover,
     .btn-outline-primary:active,
     .btn-outline-primary:focus {
         border-color: var(--cf-secondaryColor) !important;
-        background-color: var(--cf-primaryColor);
+        background-color: var(--ss-connectDark);
     }
 
 .btn-primary {
@@ -51,8 +53,11 @@ body {
 }
 
     .btn-primary:hover {
-        filter: brightness(1.2) !important;
+        /*filter: brightness(1.2) !important;*/
+        color: var(--ss-connectTextDarkBlue) !important;
+        background-color: var(--ss-connectLightBlue) !important;
         border-color: var(--ss-connectTextDarkBlue);
+
     }
 
     .btn-primary:active,
