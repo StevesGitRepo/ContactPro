@@ -9,6 +9,51 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\site.css" />
+    <None Include="wwwroot\img\CategoryFiles.png" />
+    <None Include="wwwroot\img\ClaudiaBlack.png" />
+    <None Include="wwwroot\img\Connect Pro Cropped2.png" />
+    <None Include="wwwroot\img\ConnectPro3Cropped.png" />
+    <None Include="wwwroot\img\ConnectProBlank.png" />
+    <None Include="wwwroot\img\ConnectProCropped2.png" />
+    <None Include="wwwroot\favicon.ico" />
+    <None Include="wwwroot\img\ConnectProLogInCropped.png" />
+    <None Include="wwwroot\img\ConnectProPlaceholderImage.png" />
+    <None Include="wwwroot\img\ConnectProRecropped.png" />
+    <None Include="wwwroot\img\ConnectProTextCropped - Edited.png" />
+    <None Include="wwwroot\img\Contact Pro %281%29.svg" />
+    <None Include="wwwroot\img\Contact Pro Landing Page.png" />
+    <None Include="wwwroot\img\Contact Pro Splash Page Cropped.png" />
+    <None Include="wwwroot\img\contactProLanding.png" />
+    <None Include="wwwroot\img\ContactProTextTransparentBg.png" />
+    <None Include="wwwroot\img\CourtenayTaylor.png" />
+    <None Include="wwwroot\img\CreateACategory.png" />
+    <None Include="wwwroot\img\CreateCategory.png" />
+    <None Include="wwwroot\img\CreateContact.png" />
+    <None Include="wwwroot\img\CreateFolderImg.png" />
+    <None Include="wwwroot\img\CreateImage.png" />
+    <None Include="wwwroot\img\CreateImage2.png" />
+    <None Include="wwwroot\img\DefaultContactImage.png" />
+    <None Include="wwwroot\img\EditImage.png" />
+    <None Include="wwwroot\img\FrankLangella.png" />
+    <None Include="wwwroot\img\GinaTorres.png" />
+    <None Include="wwwroot\img\LanceReddick.png" />
+    <None Include="wwwroot\img\LogoCPBlueClues2.png" />
+    <None Include="wwwroot\img\LogoCPBlues.png" />
+    <None Include="wwwroot\img\LogoCPBluesClues.png" />
+    <None Include="wwwroot\img\MoiraQuirk.png" />
+    <None Include="wwwroot\img\NathanFillion.png" />
+    <None Include="wwwroot\img\NeilKaplan.png" />
+    <None Include="wwwroot\img\NolanNorth.png" />
+    <None Include="wwwroot\img\oops.png" />
+    <None Include="wwwroot\img\PageLeong.png" />
+    <None Include="wwwroot\img\ProfilePicPt.png" />
+    <None Include="wwwroot\img\ProfilePicSQ.png" />
+    <None Include="wwwroot\img\ProfilePicWS.png" />
+    <None Include="wwwroot\img\railwayLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MailKit" Version="3.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.13" />

@@ -20,42 +20,42 @@
             @*<h2>Use a local account to log in.</h2>*@
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
+            <div class="form-floating shadow-sm">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" value="connectprodemo@gmail.com" />
                 <label asp-for="Input.Email" class="form-label"></label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
-            <div class="form-floating mt-3">
+            <div class="form-floating shadow-sm mt-3">
                 <input asp-for="Input.Password" class="form-control" autocomplete="" aria-required="" value="@ViewData["Password"]" />
                 <label asp-for="Input.Password" class="form-label"></label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div>
-                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary mt-3">
+                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary mt-3 shadow-sm">
                     <strong>
-                        Demo Log in
+                        Click To Demo
                     </strong>
                 </button>
             </div>
         </form>
-        <div class="row ps-1 pt-3">
-            <h5 class="text-light-blue">Email:</h5>
+        <div class="row ps-1 pt-4">
+            <h5 class="text-light-blue">Demo Email:</h5>
             <p class="text-blue">
-                <strong>
                     @ViewData["EmailLogin"]
-                </strong>
-            </p>
-            <h5 class="text-light-blue">Password:</h5>
-            <p class="text-blue">
                 <strong>
-                    @ViewData["Password"]
                 </strong>
             </p>
-            <h5 class="text-blue pb-2">Copy & paste the password above</h5>
+            <h5 class="text-light-blue">Demo Password:</h5>
+            <p class="text-blue">
+                    @ViewData["Password"]
+                <strong>
+                </strong>
+            </p>
+            <h5 class="text-blue"></h5>
         </div>
     </div>
-    <div class="col-md-2 h-100 d-flex flex-column justify-content-between mt-5 mt-lg-2 mb-3 ms-3 ms-lg-0">
-        <img src="~/img/ConnectProLogInCropped.png" class="img-fluid" />
+    <div class="col-md-2 h-100 d-flex flex-column justify-content-between mt-2 mt-lg-2 mb-1 ms-3 ms-lg-0">
+        <img src="/img/ConnectProBlank.png" class="img-fluid" />
     </div>
     <div class="col-md-4 card shadow">
         <h1 class="text-blue text-center mt-4 pt-1">
@@ -68,12 +68,12 @@
                 @*<h2>Use a local account to log in.</h2>*@
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-floating">
+                <div class="form-floating shadow-sm">
                     <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                     <label asp-for="Input.Email" class="form-label"></label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
-                <div class="form-floating mt-3">
+                <div class="form-floating shadow-sm mt-3">
                     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
                     <label asp-for="Input.Password" class="form-label"></label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
@@ -81,7 +81,7 @@
                 <div>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary mt-3">
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary mt-3 shadow-sm">
                         <strong>
                             Log in
                         </strong>
@@ -96,7 +96,7 @@
                     </label>
                 </div>
                 <div class="ps-1">
-                    <p class="mt-3">
+                    <p class="">
                         <a id="forgot-password" class="text-blue" asp-page="./ForgotPassword">Forgot your password?</a>
                     </p>
                     <p>
