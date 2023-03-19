@@ -9,7 +9,8 @@
     --cf-light-color: #eeeeee;
     --cf-title-font: 'Fira Sans', sans-serif;
     --cf-body-font: 'Roboto', sans-serif;
-    --ss-connectBlue: #4BAEFA;
+    --ss-connectLightBlue: #BBD9F1;
+    --ss-connectBlue: #35A2F6;
     --ss-connectDark: #003A66;
     --ss-connectTextDarkBlue: #003a66;
 }
@@ -33,26 +34,30 @@ body {
 /*--Button Overrides --*/
 /*-- Button styles override the original Bootstrap Styles --*/
 .btn-outline-primary {
-    color: var(--cf-dark-color);
-    border-color: var(--cf-primaryColor) !important;
+    color: var(--ss-connectTextDarkBlue);
+    border-color: var(--ss-connectTextDarkBlue) !important;
+    background-color: var(--ss-connectLightBlue);
 }
 
     .btn-outline-primary:hover,
     .btn-outline-primary:active,
     .btn-outline-primary:focus {
         border-color: var(--cf-secondaryColor) !important;
-        background-color: var(--cf-primaryColor);
+        background-color: var(--ss-connectDark);
     }
 
 .btn-primary {
     color: white !important;
-    background-color: var(--cf-primaryColor) !important;
+    background-color: var(--ss-connectTextDarkBlue) !important;
     border-color: var(--cf-secondary-color);
 }
 
     .btn-primary:hover {
-        filter: brightness(1.2) !important;
-        border-color: var(--cf-primaryColorDark);
+        /*filter: brightness(1.2) !important;*/
+        color: var(--ss-connectTextDarkBlue) !important;
+        background-color: var(--ss-connectLightBlue) !important;
+        border-color: var(--ss-connectTextDarkBlue);
+
     }
 
     .btn-primary:active,
@@ -107,6 +112,10 @@ main {
     min-height: 100%;
 }
 
+.hr-blue {
+    background-color: var(--ss-connectTextDarkBlue);
+}
+
 .textDark {
     color: var(--ss-connectDark);
 }
@@ -123,9 +132,6 @@ main {
     color: var(--ss-connectDark);
 }
 
-.subtitle {
-    font-size: 1.5rem;
-}
 
 .pageHeader {
     background-color: var(--cf-secondaryColor);
@@ -219,8 +225,15 @@ main {
     object-position: top;
 }
 
+.subtitle {
+    font-size: 1.5rem;
+}
 .text-blue {
-    color: var(--ss-connectTextDarkBlue)
+    color: var(--ss-connectTextDarkBlue);
+}
+
+.text-light-blue {
+    color: var(--ss-connectBlue);
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
