@@ -1,15 +1,19 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Create a new account";
 }
 
 
-<div class="row d-flex justify-content-center">
+<div class="row d-flex justify-content-center mx-2 mx-lg-0">
+    <div class="col-md-3"></div>
     <div class="col-md-6 card shadow">
-        <h1 class="text-blue mt-1">@ViewData["Title"]</h1>
+        <h1 class="text-blue text-center mt-4 pt-1">
+            <strong>
+                @ViewData["Title"]
+            </strong>
+        </h1>
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating shadow-sm">
@@ -39,9 +43,15 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
             <div>
-                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary mt-3 mb-3 shadow-sm">Register</button>
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary mt-3 mb-3 shadow-sm">
+                    <strong>
+                        Register your account
+                    </strong>
+                </button>
             </div>
         </form>
+    </div>
+    <div class="col-md-3">
     </div>
 </div>
 
