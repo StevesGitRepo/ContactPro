@@ -127,10 +127,10 @@ namespace ContactPro.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Description")
+                    /*b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(1000)
-                        .HasColumnType("text");
+                        .HasColumnType("text");*/
 
                     b.HasKey("Id");
 
