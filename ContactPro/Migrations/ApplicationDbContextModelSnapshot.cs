@@ -128,6 +128,8 @@ namespace ContactPro.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -195,9 +197,6 @@ namespace ContactPro.Migrations
 
                     b.Property<int>("ZipCode")
                         .HasColumnType("integer");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
