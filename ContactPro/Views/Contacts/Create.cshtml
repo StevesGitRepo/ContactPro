@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1 class="text-blue"><img src="~/img/CreateContact.png" width="36" class="pb-2 me-1"/>CREATE CONTACT</h1>
+<h1 class="text-blue"><img src="~/img/CreateContact.png" width="36" class="pb-2 me-1" />CREATE CONTACT</h1>
 <div class="p-3 border border-2 shadow-lg bg-light">
     <form asp-action="Create" asp-controller="Contacts" enctype="multipart/form-data">
         <div class="row g-3 p-2">
@@ -13,8 +13,8 @@
                     <img id="contactImage" class="square-img" src="~/img/ConnectProPlaceholderImage.png">
                 </div>
                 <div>
-                    <input asp-for="ImageFile" class="form-control mt-3" accept=".png,.jpg,.jpeg,.gif" 
-                        onchange="document.getElementById('contactImage').src=window.URL.createObjectURL(this.files[0])"/>
+                    <input asp-for="ImageFile" class="form-control mt-3" accept=".png,.jpg,.jpeg,.gif"
+                           onchange="document.getElementById('contactImage').src=window.URL.createObjectURL(this.files[0])" />
                     <span asp-validation-for="ImageFile" class="text-danger"></span>
                 </div>
             </div>
@@ -69,14 +69,17 @@
                         <label asp-for="Categories" class="control-label">Categories (Press Ctrl for +1)</label>
                         <select name="CategoryList" class="form-control" asp-items="ViewBag.CategoryList" multiple>
                         </select>
+                        <a class="btn btn-secondary" asp-action="Create">
+                            Create A New Category
+                        </a>
                     </div>
                     <div class="col-12 col-lg-6 mt-3">
                         <label asp-for="Birthdate" class="control-label"></label>
                         <input asp-for="Birthdate" class="form-control" />
                         <span asp-validation-for="Birthdate" class="text-danger"></span>
                     </div>
-                    <div class="col-12 d-flex justify-content-end mt-2">
-                        <button type="submit" class="btn btn-primary btn-lg rounded-pill">Save</button>
+                    <div class="col-12 d-flex justify-content-end mt-3">
+                        <button type="submit" class="btn btn-primary btn-lg">Save</button>
                     </div>
                 </div>
             </div>
