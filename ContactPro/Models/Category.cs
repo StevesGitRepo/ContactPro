@@ -14,7 +14,7 @@ namespace ContactPro.Models
         public string Name { get; set; }
 
         [Required]
-        [Display(Description = "Category Description")]
+        [Display(Name = "Category Description")]
         public string Description { get; set; }
 
         //Virtuals
