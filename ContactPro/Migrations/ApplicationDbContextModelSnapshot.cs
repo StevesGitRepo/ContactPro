@@ -127,6 +127,9 @@ namespace ContactPro.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
@@ -192,6 +195,9 @@ namespace ContactPro.Migrations
 
                     b.Property<int>("ZipCode")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
