@@ -109,7 +109,7 @@ namespace ContactPro.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AppUserId,Name,Description")] Category category)
+        public async Task<IActionResult> Create([Bind("Id,AppUserId,Name")] Category category)
         {
             ModelState.Remove("AppUserId");
 
@@ -152,7 +152,7 @@ namespace ContactPro.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AppUserId,Name,Description")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AppUserId,Name")] Category category)
         {
             if (id != category.Id)
             {
