@@ -6,6 +6,7 @@
     ViewData["Demo"] = "Try the new demo!";
     ViewData["Password"] = "ConnectPr0!";
     ViewData["EmailLogin"] = "connectprodemo@gmail.com";
+    ViewData["DemoLogin"] = "Click here to start the demo";
 }
 
 <div class="row d-flex justify-content-center mx-2">
@@ -32,7 +33,7 @@
             <div>
                 <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary mt-3 shadow-sm">
                     <strong>
-                        Click to start the Demo
+                        @ViewData["DemoLogin"]
                     </strong>
                 </button>
             </div>
