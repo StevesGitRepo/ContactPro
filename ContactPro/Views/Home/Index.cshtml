@@ -4,7 +4,7 @@
 }
 
 <div class="row align-items-center h-100">
-    <div class="col-12 col-md-6 col-lg-5 ms-lg-3 order-last order-md-first">
+    <div class="col-12 col-md-6 col-lg-5 ms-lg-3 order-last order-md-first tech hidden" id="hidden">
         <div class="row ms-2 me-1 ms-lg-5">
             <h1 class="heroTitle mt-lg-2 me-5 me-lg-0 mb-2 me-lg-0 text-center text-md-start">
                 Connect like a <span class="texthighlight">Pro</span>!
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-start mt-lg-1 order-md-last mb-5 mb-md-0">
+            <div class="text-start mt-lg-1 order-md-last mb-5 mb-md-0 tech hidden-from-right">
                 <a class="btn btn-lg btn-primary w-100 mb-1 mb-lg-0 w-lg-0 mt-0 mt-lg-4" asp-area="" asp-controller="Contacts" asp-action="Index">
                     <strong>
                         CHECK OUT THE NEW DEMO!
@@ -45,3 +45,19 @@
     </div>*@
     <div class="col-lg-3"></div>
 </div>
+
+<script>
+    const observer5 = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                return;
+            }
+        });
+    });
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer5.observe(el));
+
+    const hiddenElementsBottom = document.querySelectorAll('.hidden-from-right');
+    hiddenElementsBottom.forEach((el) => observer5.observe(el));
+</script>

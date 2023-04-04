@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace ContactPro.Models
@@ -12,10 +13,9 @@ namespace ContactPro.Models
         [Required]
         [Display(Name = "Category Name")]
         public string Name { get; set; }
-            
-        /*[Required]
-        [Display(Name = "Category Description")]
-        public string? Description { get; set; }*/
+
+        [DisplayName("Category Description")]
+        public string Description { get; set; }
 
         //Virtuals
         public virtual AppUser? AppUser { get; set; }
