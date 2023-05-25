@@ -242,3 +242,9 @@ main {
         font-size: 3.5rem;
     }
 }
+
+@media (max-width: 480px) {
+    .heroTitle {
+        font-size: 2rem;
+    }
+}
