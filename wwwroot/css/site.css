@@ -195,8 +195,7 @@ main {
 .socialicons {
     color: var(--cf-primaryColorDark);
     opacity: .9;
-    font-size: 2rem;
-}
+    font-size: 1.5rem;}
 
     .socialicons:hover {
         color: var(--cf-primaryColor);
