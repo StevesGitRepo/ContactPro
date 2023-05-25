@@ -245,6 +245,8 @@ main {
 
 @media (max-width: 480px) {
     .heroTitle {
-        font-size: 2rem;
+        font-size: 2.1rem;
+        display: flex;
+        justify-content: start;
     }
 }
