@@ -195,7 +195,7 @@ main {
 .socialicons {
     color: var(--cf-primaryColorDark);
     opacity: .9;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
     .socialicons:hover {
@@ -240,5 +240,14 @@ main {
 @media (min-width: 1200px) {
     .heroTitle {
         font-size: 3.5rem;
+    }
+}
+
+/*mobile devices*/
+@media (max-width: 480px) {
+    .heroTitle {
+        font-size: 2rem;
+        display: flex;
+        justify-content:flex-start;
     }
 }
