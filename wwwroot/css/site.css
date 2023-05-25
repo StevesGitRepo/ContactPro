@@ -122,7 +122,7 @@ main {
 
 .texthighlight {
     color: var(--ss-connectBlue);
-    text-indent: 1em;
+    text-indent: 1rem;
 }
 
 .heroTitle {
