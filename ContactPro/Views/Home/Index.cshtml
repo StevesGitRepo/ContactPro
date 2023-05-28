@@ -6,16 +6,26 @@
 <div class="row align-items-center h-100">
     <div class="col-12 col-md-6 col-lg-5 ms-lg-3 order-last order-md-first">
         <div class="row ms-2 me-1 ms-lg-5">
-            <div class="col-12 col-md-6 col-lg-6 text-center ms-0 ms-lg-5 mb-5">
+            <div class="col-12 col-md-6 col-lg-6 text-center ms-0 ms-lg-5 mb-5 order-0">
                 <img src="~/img/ConnectProCropped2.png" class="img-fluid hidden-on-desktop" />
             </div>
-            <h1 class="heroTitle mt-lg-2 me-5 me-lg-0 mb-2 me-lg-0 mb-4 mb-md-0 text-center text-md-start">
-                Connect like a <span class="texthighlight">Pro</span>!
-            </h1>
-            <div class="subtitle me-4 mt-lg-0">
-                <hr class="hr-blue hidden-on-desktop mb-4" />
-                <p class="me-3 me-md-0 hidden-on-mobile">
-                    Create contacts and groups, add notes, and email everyone all in one place. Experience
+            <div class="hidden-on-mobile">
+                <h1 class="heroTitle mt-lg-2 me-5 me-lg-0 me-lg-0 mb-4 mb-md-2 text-center text-md-start">
+                    Connect like a <span class="texthighlight">Pro</span>!
+                </h1>
+            </div>
+            <div class="text-start mt-lg-1 order-md-last mb-5 mb-md-0">
+                <a class="btn btn-lg btn-primary w-100 mb-1 mb-lg-0 w-lg-0 mt-0 mt-lg-4 hidden-on-desktop" asp-area="" asp-controller="Contacts" asp-action="Index">
+                    <strong>
+                        CHECK OUT THE NEW DEMO!
+                    </strong>
+                </a>
+            </div>
+
+            <hr class="hr-blue hidden-on-desktop mb-4" />
+            <div class="subtitle me-4 mt-lg-0 pt-3 pt-md-0">
+                <p class="me-3 me-md-0 mt-md-2 d-flex text-center text-md-start text">
+                    Create contacts & groups, add notes, and email your most important people. Experience
                     the power of ConnectPro, try it today!<br /><br />
                 </p>
             </div>
@@ -32,7 +42,7 @@
                 </div>
             </div>
             <div class="text-start mt-lg-1 order-md-last mb-5 mb-md-0">
-                <a class="btn btn-lg btn-primary w-100 mb-1 mb-lg-0 w-lg-0 mt-0 mt-lg-4" asp-area="" asp-controller="Contacts" asp-action="Index">
+                <a class="btn btn-lg btn-primary w-100 mb-1 mb-lg-0 w-lg-0 mt-0 mt-lg-4 hidden-on-mobile" asp-area="" asp-controller="Contacts" asp-action="Index">
                     <strong>
                         CHECK OUT THE NEW DEMO!
                     </strong>
@@ -43,7 +53,7 @@
     <div class="col-12 col-md-6 col-lg-6 text-center ms-0 mt-5 mt-md-0 ms-lg-5 order-last order-md-0 hidden-on-mobile">
         <img src="~/img/ConnectPro3Cropped.png" class="img-fluid" width="710" />
     </div>
-    
+
     <div class="col-lg-3"></div>
 </div>
 
