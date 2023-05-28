@@ -21,11 +21,7 @@
     <None Include="wwwroot\img\ConnectProPlaceholderImage.png" />
     <None Include="wwwroot\img\ConnectProRecropped.png" />
     <None Include="wwwroot\img\ConnectProTextCropped - Edited.png" />
-    <None Include="wwwroot\img\Contact Pro %281%29.svg" />
-    <None Include="wwwroot\img\Contact Pro Landing Page.png" />
-    <None Include="wwwroot\img\Contact Pro Splash Page Cropped.png" />
     <None Include="wwwroot\img\contactProLanding.png" />
-    <None Include="wwwroot\img\ContactProTextTransparentBg.png" />
     <None Include="wwwroot\img\CourtenayTaylor.png" />
     <None Include="wwwroot\img\CreateACategory.png" />
     <None Include="wwwroot\img\CreateCategory.png" />
