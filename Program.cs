@@ -34,7 +34,7 @@ builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailS
 var app = builder.Build();
 var scope = app.Services.CreateScope();
 //get the database updated with the latest migrations
-await DataHelper.ManageDataAsync(scope.ServiceProvider);
+// await DataHelper.ManageDataAsync(scope.ServiceProvider);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
