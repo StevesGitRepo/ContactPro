@@ -9,6 +9,7 @@ namespace ContactPro.Helpers
         {
             //get an instance of the db application context
             var dbContextsvc = svcProvider.GetRequiredService<ApplicationDbContext>();
+            Console.WriteLine("Attempting to migrate database...");
 
             //this is equivalent to update-database
             await dbContextsvc.Database.MigrateAsync(); 
